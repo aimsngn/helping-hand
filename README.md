@@ -21,12 +21,12 @@ To make ASL education accessible, interactive, and inclusive. Empower every chil
 
 The goal of the the repo is to have the following structure
 
-'''
+```  
 ├── arduino/        # Code for the arduino that controls the robot arm  
 ├── src/            # Code for the web interface  
 ├── data/           # Any data we collect/need (currently empty)  
 └── README.md       # This file  
-'''
+```
 
 Keep in mind this can all change
 
