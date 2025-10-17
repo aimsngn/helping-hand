@@ -1,0 +1,5 @@
+./venv
+.venv
+venv
+venv/Lib/site-packages/cv2/data/haarcascade_righteye_2splits.xml
+
