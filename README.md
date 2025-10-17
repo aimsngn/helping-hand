@@ -50,4 +50,4 @@ This project aims to make learning ASL fun, interactive, and sensory-rich, foste
 |------------|-------------|
 | **Hardware** | Arduino, 3D Printing Filament |
 | **Motion Control** | Servo motors, sensors |
-| **Software** | C/C++ for hardware, JS for web interface |
+| **Software** | C for hardware, JS for web interface |
