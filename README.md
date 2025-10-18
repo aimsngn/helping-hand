@@ -9,6 +9,8 @@ Helping Hand is an assistive education project that combines robotics and sign l
 
 At its core, Helping Hand uses a robotic hand capable of physically demonstrating ASL letter signs. The system provides a visual and tangible learning experience, bridging the gap between digital learning and physical interaction for children who benefit from real-world reinforcement.  
 
+We are excited to work on this project!!
+
 ---
 
 ## 🎯 Mission  
