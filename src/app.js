@@ -34,10 +34,10 @@ const TH = {
   I_pinkyUpGap: 0.05,
 
   // L: index up + thumb out; ~right angle; others bent; index straight
-  L_requiredAngleMinDeg: 55,
-  L_requiredAngleMaxDeg: 115,
-  L_minThumbSpread: 0.040,   // normalized thumb tip↔base
-  L_indexStraightDeg: 165,   // PIP angle for index
+  L_requiredAngleMinDeg: 25,
+  L_requiredAngleMaxDeg: 100,
+  L_minThumbSpread: 0.035,   // normalized thumb tip↔base
+  L_indexStraightDeg: 150,   // PIP angle for index
   L_otherBentTol: 0.62,      // TIP↔PIP normalized gap (< tol ⇒ bent)
 
   // V: index & middle up; separate tips & angle
@@ -157,7 +157,7 @@ function classifyLetters(lm){
   const allFourDown = (f[1]===0 && f[2]===0 && f[3]===0 && f[4]===0);
   const pinkyUpOnly = (f[4]===1 && f[1]===0 && f[2]===0 && f[3]===0);
   const twoUp_IM    = (f[1]===1 && f[2]===1 && f[3]===0 && f[4]===0);
-  const L_shape     = (f[1]===1 && f[0]===1 && f[2]===0 && f[3]===0 && f[4]===0);
+  const L_shape     = (f[0]===1 && f[1]===1 && f[2]===0 && f[3]===0 && f[4]===0);
   const Y_shape     = (f[0]===1 && f[4]===1 && f[1]===0 && f[2]===0 && f[3]===0);
 
   // --- A: fist + thumb outside along index ---
@@ -167,13 +167,12 @@ function classifyLetters(lm){
   if(pinkyUpOnly && f[0]===0) return 'I';
 
   // --- L: index up + thumb out; right-angle-ish; others bent; index straight ---
-  if(L_shape){
-    const thumbNorm = thumbSpreadNorm(lm,pw);
-    const indexStraight = fingerIsStraight_Index(lm);
-    const othersBent = fingerIsBent(lm,12,10,pw) && fingerIsBent(lm,16,14,pw) && fingerIsBent(lm,20,18,pw);
-    const angleOK = (i_t_deg >= TH.L_requiredAngleMinDeg && i_t_deg <= TH.L_requiredAngleMaxDeg);
-    if(angleOK && thumbNorm > TH.L_minThumbSpread && indexStraight && othersBent) return 'L';
-  }
+  // --- L: only require thumb + index up AND angle between their rays in range ---
+if (L_shape) {
+  const angleOK = (i_t_deg >= TH.L_requiredAngleMinDeg && i_t_deg <= TH.L_requiredAngleMaxDeg);
+  if (angleOK) return 'L';
+}
+
 
   // --- V: index + middle up; separated tips & angle ---
   if(twoUp_IM){
